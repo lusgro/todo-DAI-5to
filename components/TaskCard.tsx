@@ -4,12 +4,12 @@ import Task from '@/modules/Task';
 
 interface TaskProps {
     taskObj: Task,
-    onPress: void
+    onPress: () => void
 }
 
 export default function TaskCard({taskObj, onPress}: TaskProps) {
     return (
-        <Pressable onPress={() => onPress} rounded='8' overflow='hidden' bg='coolGray.300'>
+        <Pressable onPress={onPress} rounded='8' overflow='hidden' bg='coolGray.300'>
             <Box>
                 <HStack>
                     <Text>{taskObj.texto}</Text>
