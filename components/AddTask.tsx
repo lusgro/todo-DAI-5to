@@ -10,12 +10,15 @@ export default function AddTask() {
     const { addToList } = useTasks()
 
     const handleSubmit = () => {
-        if(newTask != "") addToList(newTask)
+        if(newTask != "") {
+            addToList(newTask)
+            setNewTask('')
+        }
     }
 
     return (
         <View style={styles.addTask}>
-            <Stack space={1} w="75%" maxW="300px" mx="auto">
+            <Stack space={1} w="70%">
                 <Input size="sm" placeholder="Agregar Tarea" onChangeText={(text) => setNewTask(text)} value={newTask}/>
             </Stack>
             <Button onPress={handleSubmit}>
@@ -28,7 +31,8 @@ export default function AddTask() {
 const styles = StyleSheet.create({
     addTask: {
         flexDirection: 'row',
-        justifyContent: 'center',
-        gap: 20
+        gap: 20,
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 })

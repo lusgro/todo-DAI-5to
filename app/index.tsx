@@ -7,6 +7,7 @@ import TaskCard from '@/components/TaskCard';
 import AddTask from '@/components/AddTask';
 import { useTasks } from '@/hooks/useTasks';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Tools from '@/components/Tools';
 
 export default function Index() {
     const { tasks, assignTaskCompleted, removeFromList } = useTasks();
@@ -32,6 +33,8 @@ export default function Index() {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
+            <Tools/>
+            <AddTask />
             {tasks.length > 0 ? (
                 <SwipeListView
                     data={tasks}
@@ -42,11 +45,11 @@ export default function Index() {
                     previewOpenValue={-40}
                     previewOpenDelay={3000}
                     keyExtractor={(item, index) => index.toString()}
+                    style={{paddingHorizontal: 15, marginTop: 20}}
                 />
             ) : (
-                <Text style={{ fontSize: 18 }}>No hay tareas guardadas</Text>
+                <Text style={{ fontSize: 18, paddingHorizontal: 15, marginTop: 20 }}>No hay tareas guardadas</Text>
             )}
-            <AddTask />
         </SafeAreaView>
     );
 }
