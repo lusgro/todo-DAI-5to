@@ -5,10 +5,10 @@ import { StyleSheet, View } from "react-native";
 export default function Tools () {
     return(
         <View style={styles.tools}>
-            <Button size="sm" variant="subtle" colorScheme="blue">
+            <Button size="sm" colorScheme="blue">
                 Tarea más rapida
             </Button>
-            <Button size="sm" variant="subtle" colorScheme="danger">
+            <Button size="sm" colorScheme="danger">
                 Eliminar todas las tareas
             </Button>
         </View>
