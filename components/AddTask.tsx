@@ -1,6 +1,5 @@
-import { Input, Stack } from "native-base";
+import { Input, Stack, Button, Text } from "native-base";
 import { View } from "react-native";
-import { Button } from "native-base";
 import { useTasks } from "@/hooks/useTasks";
 import { useState } from "react";
 
@@ -16,8 +15,8 @@ export default function AddTask() {
     return (
         <View>
             <Stack space={1} w="75%" maxW="300px" mx="auto">
-                <Input size="sm" placeholder="sm Input" onChangeText={setNewTask} value={newTask}/>
-            </Stack>;
+                <Input size="sm" placeholder="Agregar Tarea" onChangeText={setNewTask} value={newTask}/>
+            </Stack>
             <Button onPress={handleSubmit}>
                 Crear
             </Button>
