@@ -9,7 +9,7 @@ interface TaskProps {
 
 export default function TaskCard({taskObj, onPress}: TaskProps) {
     return (
-        <Pressable onPress={() => console.log('presionado')} rounded='8' overflow='hidden' bg='coolGray.300'>
+        <Pressable onPress={() => onPress} rounded='8' overflow='hidden' bg='coolGray.300'>
             <Box>
                 <HStack>
                     <Text>{taskObj.texto}</Text>

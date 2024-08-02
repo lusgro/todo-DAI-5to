@@ -1,4 +1,5 @@
 import { Input, Stack, Button, Text } from "native-base";
+import { StyleSheet } from 'react-native'
 import { View } from "react-native";
 import { useTasks } from "@/hooks/useTasks";
 import { useState } from "react";
@@ -9,22 +10,15 @@ export default function AddTask() {
     const { addToList } = useTasks()
 
     const handleSubmit = () => {
-        console.log(newTask)
         if(newTask != "") addToList(newTask)
     }
 
     return (
-        <View>
+        <View style={styles.addTask}>
             <Stack space={1} w="75%" maxW="300px" mx="auto">
-<<<<<<< HEAD
-                <Input size="sm" placeholder="Agregar Tarea" onChangeText={setNewTask} value={newTask}/>
+                <Input size="sm" placeholder="Agregar Tarea" onChangeText={(text) => setNewTask(text)} value={newTask}/>
             </Stack>
             <Button onPress={handleSubmit}>
-=======
-                <Input size="sm" placeholder="sm Input" onChangeText={setNewTask} value={newTask}/>
-            </Stack>;
-            <Button onPress={handleSubmit} colorScheme="success">
->>>>>>> b9fcd41ed49f92bdc23e6ef3794086e9429209a7
                 Crear
             </Button>
         </View>

@@ -11,11 +11,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Index() {
     const { tasks, assignTaskCompleted, removeFromList } = useTasks()
-    const renderItem = ({ item, index }) => {
-        <TaskCard taskObj={item} onPress={assignTaskCompleted(item)} />
+
+    const renderItem = (item) => {
+        return <TaskCard taskObj={item} onPress={assignTaskCompleted(item)} />
     }
+
     const renderHiddenItem = (data, rowMap) => {
-        <HStack flex={1} pl={2}>
+        return <HStack flex={1} pl={2}>
             <Pressable
              w={70}
              ml='auto'
@@ -28,6 +30,7 @@ export default function Index() {
             </Pressable>
         </HStack>
     }
+    
     return (
         <SafeAreaView>
             {

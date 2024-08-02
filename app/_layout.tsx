@@ -3,14 +3,17 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Slot } from "expo-router";
 import { StatusBar } from 'expo-status-bar';
 import { NativeBaseProvider } from "native-base";
+import { TasksProvider } from "@/context/tasks";
 
 export default function RootLayout() {
 
   return (
     <SafeAreaProvider>
       <NativeBaseProvider>
-        <Slot />
-        <StatusBar style="dark" />
+        <TasksProvider>
+          <Slot />
+          <StatusBar style="dark" />
+        </TasksProvider>
       </NativeBaseProvider> 
     </SafeAreaProvider>
   );

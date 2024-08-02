@@ -1,6 +1,6 @@
 import { createContext, useEffect, useReducer } from "react";
 import { tasksInitialState, tasksReducer } from "../reducers/tasks";
-import { Task } from "@/modules/Task";
+import Task from "@/modules/Task";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const TasksContext = createContext({
@@ -49,7 +49,7 @@ export const TasksProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         const fetchTasks = async () => {
           try {
             const storedTasks = await AsyncStorage.getItem('task_list');
-            if (storedTasks !== null) {
+            if (storedTasks) {
                 setInitialState(JSON.parse(storedTasks));
             }
           } catch (error) {
@@ -58,7 +58,7 @@ export const TasksProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         };
     
         fetchTasks();
-      }, []);
+    }, []);
 
     return (
         <TasksContext.Provider value={{
