@@ -18,7 +18,7 @@ export default function AddTask() {
             <Stack space={1} w="75%" maxW="300px" mx="auto">
                 <Input size="sm" placeholder="sm Input" onChangeText={setNewTask} value={newTask}/>
             </Stack>;
-            <Button onPress={handleSubmit}>
+            <Button onPress={handleSubmit} colorScheme="success">
                 Crear
             </Button>
         </View>
