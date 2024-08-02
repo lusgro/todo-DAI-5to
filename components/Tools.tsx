@@ -1,16 +1,25 @@
 import { Button } from "native-base";
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 
 export default function Tools () {
     return(
-        <View>
-            <Button size="sm" variant="subtle">
-                Eliminar todas las tareas
-            </Button>
-            <Button size="sm" variant="subtle" colorScheme="secondary">
+        <View style={styles.tools}>
+            <Button size="sm" colorScheme="blue">
                 Tarea más rapida
+            </Button>
+            <Button size="sm" colorScheme="danger">
+                Eliminar todas las tareas
             </Button>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    tools: {
+        flexDirection: 'row',
+        width: '100%',
+        justifyContent: 'space-between',
+        paddingHorizontal: 20
+    }
+})

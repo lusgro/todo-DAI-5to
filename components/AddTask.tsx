@@ -15,9 +15,15 @@ export default function AddTask() {
     return (
         <View>
             <Stack space={1} w="75%" maxW="300px" mx="auto">
+<<<<<<< HEAD
                 <Input size="sm" placeholder="Agregar Tarea" onChangeText={setNewTask} value={newTask}/>
             </Stack>
             <Button onPress={handleSubmit}>
+=======
+                <Input size="sm" placeholder="sm Input" onChangeText={setNewTask} value={newTask}/>
+            </Stack>;
+            <Button onPress={handleSubmit} colorScheme="success">
+>>>>>>> b9fcd41ed49f92bdc23e6ef3794086e9429209a7
                 Crear
             </Button>
         </View>
