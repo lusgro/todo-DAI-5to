@@ -20,9 +20,12 @@ export default function Index() {
         <HStack flex={1} pl={2}>
             <Pressable
                 w={70}
+                h={84.6}
                 ml="auto"
                 bg="red.500"
                 justifyContent="center"
+                rounded="lg"
+                alignItems="center"
                 onPress={() => removeFromList(data.item)}
                 _pressed={{ opacity: 0.5 }}
             >
@@ -45,7 +48,7 @@ export default function Index() {
                     previewOpenValue={-40}
                     previewOpenDelay={3000}
                     keyExtractor={(item, index) => index.toString()}
-                    style={{paddingHorizontal: 15, marginTop: 20}}
+                    style={{paddingHorizontal: 15, marginTop: 20, }}
                 />
             ) : (
                 <Text style={{ fontSize: 18, paddingHorizontal: 15, marginTop: 20 }}>No hay tareas guardadas</Text>
