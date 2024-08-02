@@ -1,4 +1,4 @@
-import { Task } from "@/modules/Task";
+import Task from "@/modules/Task";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Alert } from "react-native";
 
