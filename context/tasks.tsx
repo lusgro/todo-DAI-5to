@@ -1,6 +1,7 @@
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 import { tasksInitialState, tasksReducer } from "../reducers/tasks";
 import { Task } from "@/modules/Task";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const TasksContext = createContext({
     tasks: [],
@@ -33,11 +34,31 @@ function useTasksReducer () {
 
     const getFastestTask = () => dispatch({ type: 'GET_FASTEST_TASK' })
 
-    return { state, addToList, removeFromList, clearList, assignTaskCompleted, getFastestTask }
+    const setInitialState = (tasks: Task[]) => dispatch({
+        type: 'SET_INITIAL_STATE',
+        payload: tasks
+    })
+
+    return { state, addToList, removeFromList, clearList, assignTaskCompleted, getFastestTask, setInitialState }
 }
 
 export const TasksProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>  {
-    const { state, addToList, removeFromList, clearList, assignTaskCompleted, getFastestTask } = useTasksReducer()
+    const { state, addToList, removeFromList, clearList, assignTaskCompleted, getFastestTask, setInitialState } = useTasksReducer()
+
+    useEffect(() => {
+        const fetchTasks = async () => {
+          try {
+            const storedTasks = await AsyncStorage.getItem('task_list');
+            if (storedTasks !== null) {
+                setInitialState(JSON.parse(storedTasks));
+            }
+          } catch (error) {
+            console.error('Failed to load tasks:', error);
+          }
+        };
+    
+        fetchTasks();
+      }, []);
 
     return (
         <TasksContext.Provider value={{

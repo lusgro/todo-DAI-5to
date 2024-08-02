@@ -1,17 +1,29 @@
 import { Task } from "@/modules/Task";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Alert } from "react-native";
 
 export const tasksInitialState = [];
+
+export const updateTaskStorage = async (tasks: Task[]) => {
+    try {
+        const jsonData = JSON.stringify(tasks)
+        await AsyncStorage.setItem('user_data', jsonData)
+    } catch (error) {
+        Alert.alert(error)
+    }
+}
 
 export const TASKS_ACTION_TYPES = {
     ADD_TO_LIST: "ADD_TO_LIST",
     REMOVE_FROM_LIST: "REMOVE_FROM_LIST",
     CLEAR_LIST: 'CLEAR_LIST',
     ASSIGN_TASK_COMPLETED: 'ASSIGN_TASK_COMPLETED',
-    GET_FASTEST_TASK: 'GET_FASTEST_TASK'
+    GET_FASTEST_TASK: 'GET_FASTEST_TASK',
+    SET_INITIAL_STATE: 'SET_INITIAL_STATE'
 }
 
 interface Action {
-    type: "ADD_TO_LIST" | "REMOVE_FROM_LIST" | "CLEAR_LIST" | "ASSIGN_TASK_COMPLETED" | "GET_FASTEST_TASK";
+    type: "ADD_TO_LIST" | "REMOVE_FROM_LIST" | "CLEAR_LIST" | "ASSIGN_TASK_COMPLETED" | "GET_FASTEST_TASK" | "SET_INITIAL_STATE";
     payload?: any;
 }
 
@@ -33,6 +45,10 @@ export const tasksReducer = (state: Task[], action: Action) => {
     const { type: actionType, payload: actionPayload } = action
     
     switch (actionType){
+        case TASKS_ACTION_TYPES.SET_INITIAL_STATE: {
+            return actionPayload
+        }
+
         case TASKS_ACTION_TYPES.ADD_TO_LIST: {
             const newTask = new Task(actionPayload)
             const newList = [...state, newTask]
