@@ -5,7 +5,9 @@ import { Box, HStack, Icon, Pressable } from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Ionicons } from '@expo/vector-icons'
 import TaskCard from '@/components/TaskCard';
+import AddTask from '@/components/AddTask';
 import { useTasks } from '@/hooks/useTasks';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Index() {
     const { tasks, assignTaskCompleted, removeFromList } = useTasks()
@@ -27,7 +29,7 @@ export default function Index() {
         </HStack>
     }
     return (
-        <>
+        <SafeAreaView>
             {
                 tasks.length > 0 
                 ? 
@@ -44,6 +46,7 @@ export default function Index() {
                 :
                     <Text style={{ fontSize: 18}}>No hay tareas guardadas</Text>
             }
-        </>
+            <AddTask />
+        </SafeAreaView>
     )
 }
